@@ -8,7 +8,9 @@ app.use(express.json());
 app.use(cors());
 
 //routes routes
+const authRoutes = require("./routes/auth.route");
 
+app.use("/", authRoutes);
 //home
 app.get("/", (req, res) => {
     res.send("Route is working");
