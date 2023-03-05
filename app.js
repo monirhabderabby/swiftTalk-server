@@ -10,7 +10,8 @@ app.use(cors());
 //routes routes
 const authRoutes = require("./routes/auth.route");
 
-app.use("/", authRoutes);
+app.use("/auth", authRoutes);
+
 //home
 app.get("/", (req, res) => {
     res.send("Route is working");
