@@ -10,9 +10,11 @@ app.use(cors());
 //routes routes
 const authRoutes = require("./routes/auth.route");
 const conversationRoutes = require("./routes/conversation.route");
+const messageRoutes = require("./routes/message.route");
 
 app.use("/auth", authRoutes);
 app.use("/", conversationRoutes);
+app.use("/", messageRoutes);
 
 //home
 app.get("/", (req, res) => {

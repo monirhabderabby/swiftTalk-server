@@ -1,4 +1,4 @@
-const { createConversation } = require("../services/conversation.services");
+const { createConversation, getConversation } = require("../services/conversation.services");
 
 exports.createConversation = async (req, res) => {
     try {
@@ -12,6 +12,23 @@ exports.createConversation = async (req, res) => {
         res.status(400).json({
             status: "failed",
             message: "Failed to create conversation",
+            error: error.message,
+        });
+    }
+};
+
+exports.getConversations = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = await getConversation(id);
+        res.status(200).json({
+            success: true,
+            data: result,
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: "failed",
+            message: "Failed to get conversation",
             error: error.message,
         });
     }

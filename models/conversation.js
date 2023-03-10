@@ -12,9 +12,26 @@ const conversationSchema = new mongoose.Schema(
         conversation_type: {
             type: String,
         },
-        messages: {
-            type: [mongoose.Schema.Types.Mixed],
-            default: [],
+        messages: [
+            {
+                sender: {
+                    type: mongoose.Schema.Types.ObjectId,
+                },
+                text: String,
+                audio: String,
+                photos: [
+                    {
+                        type: String,
+                    },
+                ],
+                sentAt: {
+                    type: Date,
+                    default: Date.now(),
+                },
+            },
+        ],
+        lastMessage: {
+            type: String,
         },
     },
     {
